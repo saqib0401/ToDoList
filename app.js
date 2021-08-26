@@ -2,7 +2,6 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const _ = require("lodash");
-// const date = require(__dirname +"/date.js");
 
 const app = express();
 
@@ -68,6 +67,10 @@ app.get("/", function (req, res) {
   });
 });
 
+app.get("/about", function (req, res) {
+  res.render("about");
+});
+
 app.get("/:customListName", function (req, res) {
   const customListName = _.capitalize(req.params.customListName);
 
@@ -97,10 +100,6 @@ app.get("/:customListName", function (req, res) {
       }
     }
   );
-});
-
-app.get("/about", function (req, res) {
-  res.render("about");
 });
 
 app.post("/", function (req, res) {
